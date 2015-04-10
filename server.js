@@ -8,6 +8,7 @@ app = express();
 app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
+res.end("Hello, World!");
 // настроим маршруты
 app.get("/hello", function (req, res) {
 res.send("Hello, World!");
