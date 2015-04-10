@@ -1,4 +1,4 @@
-git clone https://github.com/semmypurewal/node-dev-bootstrap.git my_project
+git clone https://github.com/
 
 ____________________________________________________________________________________________________
 Note that the Vagrantfile will download and install the precise32 vagrant box if you don't
