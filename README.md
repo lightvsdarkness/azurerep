@@ -1,5 +1,7 @@
 git clone https://github.com/
 
+
+VAGRANT STUFF
 ____________________________________________________________________________________________________
 Note that the Vagrantfile will download and install the precise32 vagrant box if you don't
 already have it.
@@ -15,8 +17,6 @@ You can test out your environment by ssh'ing into your environment and running t
     node server.js
 
 Next open localhost:3000 in your web browser.
-
-
 
 ____________________________________________________________________________________________________
 ## Important note about Installing NPM Packages
