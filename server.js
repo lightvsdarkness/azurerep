@@ -1,59 +1,65 @@
 var express = require("express"),
-    http = require("http"),
-    // import the mongoose library
-    mongoose = require("mongoose"),
-    app = express(),
-    services,
-    mongoUrl = "mongodb://localhost/amazeriffic";
+port = process.env.PORT || 1337,
+http = require("http"),
+app = express();
+// настроим статическую файловую папку для маршрута по умолчанию
 
 app.use(express.static(__dirname + "/client"));
-app.use(express.bodyParser());
-
-if (process.env.VCAP_SERVICES) {
-    services = JSON.parse(process.env.VCAP_SERVICES);
-    mongoUrl = services["mongolab"][0].credentials.uri;
-    console.log(process.env.VCAP_SERVICES);
-}
-
-console.log(mongoUrl);
-
-// connect to the amazeriffic data store in mongo
-mongoose.connect(mongoUrl);
-
-// This is our mongoose model for todos
-var ToDoSchema = mongoose.Schema({
-    description: String,
-    tags: [ String ]
+// создадим HTTP-сервер на базе Express
+http.createServer(app).listen(port);
+// настроим маршруты
+app.get("/hello", function (req, res) {
+res.send("Hello, World!");
+});
+app.get("/goodbye", function (req, res) {
+res.send("Goodbye, World!");
 });
 
-var ToDo = mongoose.model("ToDo", ToDoSchema);
-
-http.createServer(app).listen(process.env.PORT || 3000);
-
-app.get("/todos.json", function (req, res) {
-    ToDo.find({}, function (err, toDos) {
-	res.json(toDos);
-    });
-});
-
+/* app.use(express.urlencoded());
 app.post("/todos", function (req, res) {
-    console.log(req.body);
-    var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
-    newToDo.save(function (err, result) {
-	if (err !== null) {
-	    // the element did not get saved!
-	    console.log(err);
-	    res.send("ERROR");
-	} else {
-	    // our client expects *all* of the todo items to be returned, so we'll do
-	    // an additional request to maintain compatibility
-	    ToDo.find({}, function (err, result) {
-		if (err !== null) {
-		    // the element did not get saved!
-		    res.send("ERROR");
-		}
-		res.json(result);
-	    });
-	}
-    });
+  // сейчас объект сохраняется в req.body
+  var newToDo = req.body;
+  console.log(newToDo);
+  toDos.push(newToDo);
+  // отправляем простой объект
+  res.json({"message":"Вы разместили данные на сервере!"});
+}); */
+var globalVar = "NULL";
+var globalVarLast = "NULL";
+//var sleep = require('sleep');
+//var writeFile = require('write');
+var coolObject = "{ 'name': 'Вася', 'comment': 'hello'}";
+
+app.get("/somewayjson", function (req, res) {
+// res.json возвращает объект coolObject целиком в виде файла JSON
+res.json(coolObject);
+//console.log(req);
+//console.log(res);
 });
+
+
+app.use(express.bodyParser());
+app.post("/jsoncomment", function (req, res) {
+  // сейчас объект сохраняется в req.body
+  var newToDo = req.body;
+  console.log(newToDo);
+  //toDos.push(newToDo);
+  // отправляем простой объект
+  res.json({"message":"Вы разместили данные на сервере!"});
+});
+
+
+
+
+setInterval(function () {
+	if (globalVarLast != globalVar && globalVar != "NULL")
+	{
+		globalVarLast = globalVar;
+		//writeFile('comments.txt', globalVarLast, function(err) {
+  		//if (err) console.log(err);
+		//														});
+		console.log(globalVarLast);
+	}
+	//sleep.sleep(10); //sleep for n seconds
+	console.log('Loop for end');
+  }, 5000);
