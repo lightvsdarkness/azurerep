@@ -1,9 +1,9 @@
-var express = require("express"),
+﻿var express = require("express"),
 app = express(),
 stream = require("./stream.js"),
 http = require("http"),
-port = 2000;
-//port = process.env.PORT || 1337;
+//port = 2000;
+port = process.env.PORT || 1337;
 
 var mongoose= require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
