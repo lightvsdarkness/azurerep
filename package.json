@@ -1,8 +1,15 @@
 {
-  "name": "npmdemo",
-  "version": "1.0.0",
-  "dependencies": {
-    "body-parser": "^1.12.3",
-    "express": "3.4.x"
-  }
+
+"name": "MargaritaJS",
+
+"version": "1.0.0",
+
+"dependencies": {
+
+"express": "3.4.x",
+"ntwitter": "0.5.x",
+"mongoose": "3.6.x"
+
+}
+
 }
