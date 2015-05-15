@@ -2,25 +2,23 @@ var express = require("express"),
 app = express(),
 stream = require("./stream.js"),
 http = require("http"),
-port = 2000;
-//port = process.env.PORT || 1337;
+//port = 2000;
+port = process.env.PORT || 1337;
 
 var mongoose= require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 mongoose.connect(connectionString);
 
-var CommSchema = mongoose.Schema
-({
+var CommSchema = mongoose.Schema({
+title : String,
 
-"title" : String,
-
-"commentariy" : String
+commentariy : String
 
 });
 
 var com1 = mongoose.model("Comm", CommSchema);
 
-var c1 = new Comm({"title":"Doggie", "commentariy":"goodie"});
+var c1 = new com1({"title":"Doggie", "commentariy":"goodie"});
 
 c1.save(function (err) {
 
@@ -29,10 +27,10 @@ console.log(err);
 } else {
 console.log("Объект не был сохранен!");
 }
-
 });
 
 Comm.find({"title" : "bad"}, function (err, comments) {
+
 
 comments.forEach(function (com) {
 com.commentariy = "the best!";
@@ -40,7 +38,6 @@ com.commentariy = "the best!";
 com.save(function (err) {
 
 if (err) {
-
 
 console.log(err);
 
