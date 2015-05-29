@@ -1,52 +1,70 @@
-﻿var express = require("express"),
+var express = require("express"),
 app = express(),
 stream = require("./stream.js"),
 http = require("http"),
-//port = 2000;
 port = process.env.PORT || 1337;
 
 var mongoose= require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 mongoose.connect(connectionString);
 
-var CommSchema = mongoose.Schema({
-title : String,
+var CommSchema = mongoose.Schema
+({
 
-commentariy : String
+"id" : String,
+
+"commentariy" : String
 
 });
 
 var com1 = mongoose.model("Comm", CommSchema);
 
-var c1 = new com1({"title":"Doggie", "commentariy":"goodie"});
+// var c1 = new com1({"id":"Doggie", "commentariy":"goodie"});
 
-c1.save(function (err) {
+// c1.save(function (err) 
+// {
 
-if (err !== null) {
-console.log(err);
-} else {
-console.log("Объект не был сохранен!");
-}
-});
+// if (err !== null) 
+// 		{
+// console.log(err);
+// console.log("Объект не был сохранен!");
+// 		} else 
+// 	{
+// console.log("Объект был сохранен!");
+// 	}
 
-Comm.find({"title" : "bad"}, function (err, comments) {
+// });
 
+com1.find({"id" : "bad"}, function (err, comments) 
+	{
 
-comments.forEach(function (com) {
+comments.forEach(function (com) 
+		{
 com.commentariy = "the best!";
 
-com.save(function (err) {
+com.save(function (err) 
+			{
 
-if (err) {
+	if (err)	
+				{
+
 
 console.log(err);
 
-}
+				}
 
-});
+			});
 
-});
+		});
 
+	});
+
+com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err)
+{
+	if(err!== null)
+	{
+		console.log(err);
+	}
 });
 
 var coolObject = {my: 12345};
@@ -58,17 +76,43 @@ app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
 
-app.get("/someway.json", function (req, res) {
+app.get("/someway.json", function (req, res)
+{
 res.json(stream);
 });
 
 
+
+
+ var ToDB = function (newId, newComment)
+ 		{
+ 			var com1 =  { "Id" : newId, "Comment" : newComment };
+ 			com1.save(function (err) 
+{
+
+if (err !== null) {
+console.log(err);
+		}
+		else 
+	{
+console.log("Объект был сохранен!");
+	}
+}
+
+
+);
+ 		};
+
+
+
 app.use(express.bodyParser());
-app.post("/todos", function (req, res) {
+app.post("/todos", function (req, res) 
+{
   // сейчас объект сохраняется в req.body
   var newToDo = req.body;
   console.log(newToDo);
   toDos.push(newToDo);
+  ToDB(newToDo.Id, newToDo.Comment);
   // отправляем простой объект
   res.json({"message":"Вы разместили данные на сервере!"});
 });

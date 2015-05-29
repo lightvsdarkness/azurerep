@@ -1,4 +1,5 @@
-var stream = function () {
+var stream = function () 
+{
 	var ntwitter = require("ntwitter"),
 credentials = require("./credentials.json"),
 twitter;
@@ -6,14 +7,18 @@ twitter;
 twitter = ntwitter(credentials);
 twitter.stream(
 "statuses/filter",
-{ "track": ["awesome"]},
+	{ 
+	"track": ["awesome"]
+	},
 
-function(stream) {
-stream.on("data", function(tweet) {
-//console.log(tweet.text);
-});
+function(stream) 
+		{
+stream.on('data', function(data) 
+			{	
+console.log(data.text);
+			});
 
-});
-return tweet.text;
+		});
+return data.text;
 };
 module.exports = stream;

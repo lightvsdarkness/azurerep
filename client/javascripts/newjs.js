@@ -5,7 +5,8 @@ return num*num;
 });
 
 
-var main = function () {
+var main = function () 
+{
 "use strict";
 
 var $photo;
@@ -16,15 +17,19 @@ var someAppOne11object;
 
 var someObject ={};
 
-setInterval(function () {
-    $.getJSON("/someway.json", function (fromServer) {
+setInterval(function () 
+{
+    $.getJSON("/someway.json", function (fromServer) 
+    {
     // Сейчас "fromServer" становится объектом, возвращаемым маршрутом someway.json
     console.log(fromServer);
 	});
   }, 5000);
 
-var Clake = function() {
-	$.post("/todos", someObject, function (response) {
+var Clake = function() 
+{
+	$.post("/todos", someObject, function (response) 
+	{
     // это обратный вызов, выполняется при ответе сервера
     console.log("Получение данных с сервера");
     console.log(response);
@@ -34,12 +39,14 @@ var Clake = function() {
 
 
 
-var sun = function () {
+var sun = function () 
+{
 //
-var tweet = $.getJSON("/someway.json", function sun(fromServer) {
+var tweet = $.getJSON("/someway.json", function sun(fromServer) 
+	{
 
 someAppOne11object = fromServer;
-});
+	});
 
 //}, 5000);
 return fromServer;
@@ -49,31 +56,34 @@ return fromServer;
 
 
 
-$.getJSON(url, function (flickrResponse) {
-flickrResponse.items.forEach(function (photo) {
+$.getJSON(url, function (flickrResponse) 
+{
+flickrResponse.items.forEach(function (photo) 
+	{
     var $img = $("<img>").hide();
 
     	$img.on("click", function ()
 		{
 		var that = this;
 
-	$("img").hide(1000,  function() {
+	$("img").hide(1000,  function() 
+			{
 			$img.show();
 			$IMGcom = $img.attr("src");
 
 
-});
+			});
 		
 		
 		
-    });
+    	});
 $img.attr("src", photo.media.m);
 $("main").append($img);
 $img.fadeIn();
 
 
 
-});
+	});
 
 });
 
@@ -128,7 +138,8 @@ $(" main .content").prepend($("<p>").text(cloud));
    };
 
 
-   $(".comment-input input").on("keypress", function (event) {
+   $(".comment-input input").on("keypress", function (event) 
+{
 if (event.keyCode === 13) 
 	{
 addCommentFromInputBox();
@@ -136,16 +147,18 @@ Clake();
 	}
 });
 
- $(".comment-input button").on("click", function (event) {
+ $(".comment-input button").on("click", function (event) 
+ {
     addCommentFromInputBox();
     Clake();
   });
 
 
    var addCommentFromInputBox = function () 
-   {
+{
    	 	
- 	if ($(".comment-input input").val() !== "") {
+ 	if ($(".comment-input input").val() !== "") 
+ 	{
  		var $new_comment = $("<p>");
 	    $new_comment.text($(".comment-input input").val());
 	    $(".comments").append($new_comment);
@@ -156,8 +169,7 @@ Clake();
 	var jsonString2 = JSON.stringify(jsonString);
 	console.log(jsonString2);
 	}
-
-	};
+};
 
 
 if (event.keyCode === 13) 
@@ -168,8 +180,7 @@ if (event.keyCode === 13)
 	    $new_comment.fadeIn(2000);	
 	    $(".comment-input input").val("");
 
-};
-
 	};
+};
 
 $(document).ready(main);
