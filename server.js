@@ -3,12 +3,15 @@ var express = require("express"),
     // import the mongoose library
     mongoose = require("mongoose"),
     app = express();
+var port = process.env.PORT || 1337;
+var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 
 app.use(express.static(__dirname + "/client"));
 app.use(express.bodyParser());
 
 // connect to the amazeriffic data store in mongo
-mongoose.connect('mongodb://localhost/amazeriffic');
+//mongoose.connect('mongodb://localhost/amazeriffic');
+mongoose.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
 // This is our mongoose model for todos
 var ToDoSchema = mongoose.Schema({
@@ -18,7 +21,7 @@ var ToDoSchema = mongoose.Schema({
 
 var ToDo = mongoose.model("ToDo", ToDoSchema);
 
-http.createServer(app).listen(3000);
+http.createServer(app).listen(port);
 
 app.get("/todos.json", function (req, res) {
     ToDo.find({}, function (err, toDos) {
