@@ -1,15 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
   background: #f9e933;
   font-family: 'Droid Sans', sans-serif;
 }
 
 header, main, footer {
+  display: block;
   min-width: 855px;
 }
 
 header .container, main .container, footer .container {
   max-width: 855px;
   margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 header {
@@ -19,21 +29,12 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
-/* MAIN LOGO */
-h1 {
-  font-family: 'Ubuntu', sans-serif;
+header h1 {
   font-style: italic;
   font-size: 3em;
   color: #b33;
   float: left;
   width: 570px;
-}
-
-/* FOOTER HEADINGS */
-h5 {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1.25em;
-    margin-bottom: 20px;
 }
 
 header nav {
@@ -63,7 +64,7 @@ main {
     padding: 5px;
 }
 
-.tabs a .active {
+.tabs a span.active {
     background: #eee;
 }
 
@@ -73,6 +74,18 @@ main .content {
     background: #eee;
 }
 
+main .content h3 {
+    border-radius: 5px;
+    color: #999;;
+    background: #ddd;
+    padding: 5px;
+    margin: 20px 0 10px 0;
+}
+
+main .content h3:first-child {
+    margin-top: 0;
+}
+
 main .content li {
     border-radius: 5px;
     padding: 3px;
@@ -80,7 +93,7 @@ main .content li {
     margin: 0 0 10px 0;
 }
 
-main .content button {
+main .content span {
   font-weight: bold;
   padding: 0 3px 0 3px;
   border-radius: 5px;
@@ -90,14 +103,20 @@ main .content button {
   font-size: 1.3em;
 }
 
-
 main .content p {
-    background: yellow;
+    color: red;
+    margin: 30px 0 0px 0;
+}
+
+main .content p:first-child {
+    margin-top: 10px;
 }
 
 main .content input {
     font-size: 1.5em;
 }
+
+
 
 footer {
     border-top: 1px solid #ddd;
@@ -107,6 +126,11 @@ footer {
 footer .contact {
   float: left;
   width: 570px;    
+}
+
+footer h5 {
+    font-size: 1.25em;
+    margin-bottom: 20px;
 }
 
 footer .contact p:nth-child(2) {
