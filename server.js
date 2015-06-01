@@ -29,23 +29,22 @@ var com1 = mongoose.model("Comm", CommSchema);
 // 	}
 // });
 
-var findCom = com1.find({"id" : "bad"}, function (err, comments) {
-	comments.forEach(function (com) {
-		com.commentariy = "the best!";
-		com.save(function (err) {
-			if (err) {
-				console.log(err);
-			}
-		});
-	});
-});
+// var findCom = com1.find({"id" : "bad"}, function (err, comments) {
+// 	comments.forEach(function (com) {
+// 		com.commentariy = "the best!";
+// 		com.save(function (err) {
+// 			if (err) {
+// 				console.log(err);
+// 			}
+// 		});
+// 	});
+// });
 
-var removeCom = com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err) {
-	if(err!== null)
-	{
-		console.log(err);
-	}
-});
+// var removeCom = com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err) {
+// 	if(err!== null) {
+// 		console.log(err);
+// 	}
+// });
 
 var coolObject = {my: 12345};
 var toDos = [];
@@ -64,14 +63,16 @@ var ToDB = function (newId, newComment) {
 	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
 	//ОШИБКА БЫЛА
  	var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
- 	newcom1.save(function (err) {
+ 	newcom1.save(function (err, result) {
 		if (err !== null) {
 			console.log(err);
 		}
 		else {
 			console.log("Объект был сохранен!");
+			return result;
 		}
 	});
+	
 };
 
 app.post("/todos", function (req, res) {
@@ -79,7 +80,7 @@ app.post("/todos", function (req, res) {
   var newToDo = req.body;
   console.log(newToDo);
   toDos.push(newToDo);
-  ToDB(newToDo.Id, newToDo.Comment);
+  var workToSave = ToDB(newToDo.Id, newToDo.Comment);
   // отправляем простой объект
-  res.json({'"message":"Вы разместили данные на сервере!"'});
+  res.json(workToSave);
 });
