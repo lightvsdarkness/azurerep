@@ -3,11 +3,12 @@ var express = require("express"),
     // import the mongoose library
     mongoose = require("mongoose"),
     app = express();
+app.use(express.static(__dirname + "/client"));
+app.use(express.bodyParser());
 var port = process.env.PORT || 1337;
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 
-app.use(express.static(__dirname + "/client"));
-app.use(express.bodyParser());
+
 
 // connect to the amazeriffic data store in mongo
 //mongoose.connect('mongodb://localhost/amazeriffic');

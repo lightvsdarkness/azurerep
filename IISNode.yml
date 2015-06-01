@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-loggingEnabled true
-devErrorsEnabled true
-=======
 loggingEnabled: true
 devErrorsEnabled: true
->>>>>>> 5c13ad5044776ad4e6e4043aa96681feac012a6d

@@ -39,6 +39,7 @@ app.get("/todos.json", function (req, res) {
 app.post("/todos", function (req, res) {
     console.log(req.body);
     var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
+    
     newToDo.save(function (err, result) {
 	if (err !== null) {
 	    // the element did not get saved!
