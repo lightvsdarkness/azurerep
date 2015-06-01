@@ -59,38 +59,38 @@ http.createServer(app).listen(port);
 // 	res.json(stream);
 // });
 
-// var ToDB = function (newId, newComment) {
-// 	//ПРИМЕР:
-// 	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
-// 	//ОШИБКА БЫЛА:
-//  	//var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
-//  	var newcom1 =  new com1({"id" : newId, "commentariy" : newComment });
-//  	newcom1.save(function (err, result) {
-// 		if (err !== null) {
-// 			console.log(err);
-// 		}
-// 		else {
-// 			console.log("Объект был сохранен!");
-// 			//return result;
-// 		}
-// 	});
-// };
+var ToDB = function (newId, newComment) {
+	//ПРИМЕР:
+	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
+	//ОШИБКА БЫЛА:
+ 	//var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
+ 	var newcom1 =  new com1({"id" : newId, "commentariy" : newComment });
+ 	newcom1.save(function (err, result) {
+		if (err !== null) {
+			console.log(err);
+		}
+		else {
+			console.log("Объект был сохранен!");
+			//return result;
+		}
+	});
+};
 
 app.post("/todos", function (req, res) {
   // БЫЛО:
   //var newToDo = req.body;
   //СТАЛО:
-  var newToDoId = req.body.id;
-  var newToDoComment = req.body.Commenta;
+  var newToDoId = req.body.Id;
+  var newToDoComment = req.body.Comment;
   //console.log(newToDo);
   //toDos.push(newToDo);
-  //var workToSave = ToDB(newToDoId, newToDoComment);
+  var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-	if (req.body.Commenta == "a") {
-		res.send(req.body);
-	}
-	else {
+	// if (req.body.Commenta == "a") {
+	// 	res.send(req.body);
+	// }
+	// else {
 		res.json(req.body);
-	}
+	// }
 
 });
