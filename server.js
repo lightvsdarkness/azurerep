@@ -82,7 +82,7 @@ app.post("/todos", function (req, res) {
   //СТАЛО:
   var newToDoId = req.body.Id;
   var newToDoComment = req.body.Comment;
-  console.log(newToDo);
+  //console.log(newToDo);
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
