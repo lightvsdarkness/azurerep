@@ -78,11 +78,14 @@ var ToDB = function (newId, newComment) {
 };
 
 app.post("/todos", function (req, res) {
-  // сейчас объект сохраняется в req.body
-  var newToDo = req.body;
+  // БЫЛО:
+  //var newToDo = req.body;
+  //СТАЛО:
+  var newToDoId = req.body.Id;
+  var newToDoComment = req.body.Comment;
   console.log(newToDo);
   toDos.push(newToDo);
-  var workToSave = ToDB(newToDo.Id, newToDo.Comment);
+  var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-  res.json(newToDo);
+  res.json(newToDoComment);
 });
