@@ -2,13 +2,14 @@ var express = require("express"),
 app = express(),
 http = require("http"),
 port = process.env.PORT || 1337;
-
+//var stream = require("./stream.js");
 var mongoose= require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 mongoose.connect(connectionString);
 
-var CommSchema = new mongoose.Schema
-({
+app.use(express.bodyParser());
+
+var CommSchema = new mongoose.Schema({
 id : String,
 commentariy : String
 });
@@ -16,10 +17,8 @@ commentariy : String
 var com1 = mongoose.model("Comm", CommSchema);
 
 // var c1 = new com1({"id":"Doggie", "commentariy":"goodie"});
-
-// c1.save(function (err) 
+// var saveCom = c1.save(function (err) 
 // {
-
 // if (err !== null) 
 // 		{
 // console.log(err);
@@ -28,35 +27,20 @@ var com1 = mongoose.model("Comm", CommSchema);
 // 	{
 // console.log("Объект был сохранен!");
 // 	}
-
 // });
 
-com1.find({"id" : "bad"}, function (err, comments) 
-	{
-
-comments.forEach(function (com) 
-		{
-com.commentariy = "the best!";
-
-com.save(function (err) 
-			{
-
-	if (err)	
-				{
-
-
-console.log(err);
-
-				}
-
-			});
-
+var findCom = com1.find({"id" : "bad"}, function (err, comments) {
+	comments.forEach(function (com) {
+		com.commentariy = "the best!";
+		com.save(function (err) {
+			if (err) {
+				console.log(err);
+			}
 		});
-
 	});
+});
 
-com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err)
-{
+var removeCom = com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err) {
 	if(err!== null)
 	{
 		console.log(err);
@@ -72,38 +56,25 @@ app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
 
-app.get("/someway.json", function (req, res)
-{
-res.json(stream);
-});
+// app.get("/someway.json", function (req, res) {
+// 	res.json(stream);
+// });
 
-
-
-
- var ToDB = function (newId, newComment)
- 		{
- 			var com1 =  { "Id" : newId, "Comment" : newComment };
- 			com1.save(function (err) 
-{
-
-if (err !== null) {
-console.log(err);
+var ToDB = function (newId, newComment) {
+	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
+	//ОШИБКА БЫЛА
+ 	var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
+ 	newcom1.save(function (err) {
+		if (err !== null) {
+			console.log(err);
 		}
-		else 
-	{
-console.log("Объект был сохранен!");
-	}
-}
+		else {
+			console.log("Объект был сохранен!");
+		}
+	});
+};
 
-
-);
- 		};
-
-
-
-app.use(express.bodyParser());
-app.post("/todos", function (req, res) 
-{
+app.post("/todos", function (req, res) {
   // сейчас объект сохраняется в req.body
   var newToDo = req.body;
   console.log(newToDo);
@@ -112,4 +83,3 @@ app.post("/todos", function (req, res)
   // отправляем простой объект
   res.json({'"message":"Вы разместили данные на сервере!"'});
 });
-
