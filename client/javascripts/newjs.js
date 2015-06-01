@@ -5,8 +5,7 @@ return num*num;
 });
 
 
-var main = function () 
-{
+var main = function () {
 "use strict";
 
 var $photo;
@@ -26,8 +25,7 @@ var someObject ={};
 // 	});
 //   }, 5000);
 
-var Clake = function() 
-{
+var Clake = function() {
 	$.post("todos", someObject, function (data) 
 	{
     // это обратный вызов, выполняется при ответе сервера
@@ -41,10 +39,9 @@ var Clake = function()
 
 var sun = function () {
 //
-var tweet = $.getJSON("/someway.json", function sun(fromServer) {
-	someAppOne11object = fromServer;
-});
-
+	var tweet = $.getJSON("/someway.json", function sun(fromServer) {
+		someAppOne11object = fromServer;
+	});
 //}, 5000);
 return fromServer;
 };
@@ -52,35 +49,21 @@ return fromServer;
 
 
 
-$.getJSON(url, function (flickrResponse) 
-{
-flickrResponse.items.forEach(function (photo) 
-	{
-    var $img = $("<img>").hide();
+$.getJSON(url, function (flickrResponse) {
+	flickrResponse.items.forEach(function (photo) {
+	    var $img = $("<img>").hide();
 
-    	$img.on("click", function ()
-		{
-		var that = this;
-
-	$("img").hide(1000,  function() 
-			{
-			$img.show();
-			$IMGcom = $img.attr("src");
-
-
+		$img.on("click", function () {
+			var that = this;
+			$("img").hide(1000,  function() {
+				$img.show();
+				$IMGcom = $img.attr("src");
 			});
-		
-		
-		
-    	});
-$img.attr("src", photo.media.m);
-$("main").append($img);
-$img.fadeIn();
-
-
-
+	    });
+	$img.attr("src", photo.media.m);
+	$("main").append($img);
+	$img.fadeIn();
 	});
-
 });
 
 
