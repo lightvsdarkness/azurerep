@@ -26,14 +26,14 @@ var someObject;
 //   }, 5000);
 
 var Clake = function() {
-	console.log(someObject);
 	console.log(typeof(someObject));
-	$.post("todos", someObject, function (data) 
+	console.log(someObject);
+	$.post("todos", someObject, function (response) 
 	{
     // это обратный вызов, выполняется при ответе сервера
     console.log("Получение данных с сервера");
-    console.log(data);
-    console.log(typeof(data));
+    console.log(typeof(response));
+    console.log(response);
     });
 };
 
@@ -144,9 +144,9 @@ Clake();
 	    $new_comment.fadeIn(1500);
 	    var $comms = $(".comment-input input").val();
 	    $(".comment-input input").val("");
-	    var jsonString = { "Id" : $IMGcom, "Comment" : $comms };
-	    // WTFWTFWTF jsonString2?????????????????????????????????????????????????? ИСПОЛЬЗУЙ СПЕЦИАЛЬНО СОЗДАННЫЙ ДЛЯ ЭТОГО someObject
-	someObject = JSON.stringify(jsonString);
+	    var someObject = { "Id" : $IMGcom, "Comment" : $comms };
+	    // WTFWTFWTF jsonString2 WRONG!!! ИСПОЛЬЗУЙ СПЕЦИАЛЬНО СОЗДАННЫЙ ДЛЯ ЭТОГО someObject
+	//someObject = JSON.stringify(jsonString);
 	//console.log(jsonString2);
 	}
 };
