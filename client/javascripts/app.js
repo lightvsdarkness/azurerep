@@ -1,6 +1,6 @@
 var main = function (toDoObjects) {
     "use strict";
-    console.log("SANITY CHECK");
+
     var toDos = toDoObjects.map(function (toDo) {
           // we'll just return the description
           // of this toDoObject
@@ -85,8 +85,6 @@ var main = function (toDoObjects) {
                         newToDo = {"description":description, "tags":tags};
 
                     $.post("todos", newToDo, function (result) {
-                        console.log(result);
-
                         //toDoObjects.push(newToDo);
                         toDoObjects = result;
 
