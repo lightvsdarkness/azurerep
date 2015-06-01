@@ -81,7 +81,7 @@ app.post("/todos", function (req, res) {
   //var newToDo = req.body;
   //СТАЛО:
   var newToDoId = req.body.id;
-  var newToDoComment = req.body.commentariy;
+  var newToDoComment = req.body.commenta;
   //console.log(newToDo);
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
