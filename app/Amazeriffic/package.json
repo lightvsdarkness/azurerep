@@ -1,8 +1,15 @@
 {
-    "name": "amazeriffic",
-    "description": "The best ToDo list app in the history of the world",
-    "version": "0.0.1",
-    "dependencies": {
-	"mongoose": "3.6.x"
-    }
+
+"name": "MargaritaJS",
+
+"version": "1.0.0",
+
+"dependencies": {
+
+"express": "3.4.x",
+"ntwitter": "0.5.x",
+"mongoose": "3.6.x"
+
+}
+
 }

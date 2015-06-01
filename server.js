@@ -1,55 +1,116 @@
 var express = require("express"),
-    http = require("http"),
-    // import the mongoose library
-    mongoose = require("mongoose"),
-    app = express();
-app.use(express.static(__dirname + "/client"));
-app.use(express.bodyParser());
-var port = process.env.PORT || 1337;
+app = express(),
+stream = require("./stream.js"),
+http = require("http"),
+port = process.env.PORT || 1337;
+
+var mongoose= require('mongoose');
 var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
+mongoose.connect(connectionString);
 
-
-
-// connect to the amazeriffic data store in mongo
-//mongoose.connect('mongodb://localhost/amazeriffic');
-mongoose.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
-
-// This is our mongoose model for todos
-var ToDoSchema = mongoose.Schema({
-    description: String,
-    tags: [ String ]
+var CommSchema = new mongoose.Schema
+({
+id : String,
+commentariy : String
 });
 
-var ToDo = mongoose.model("ToDo", ToDoSchema);
+var com1 = mongoose.model("Comm", CommSchema);
 
+// var c1 = new com1({"id":"Doggie", "commentariy":"goodie"});
+
+// c1.save(function (err) 
+// {
+
+// if (err !== null) 
+// 		{
+// console.log(err);
+// console.log("Объект не был сохранен!");
+// 		} else 
+// 	{
+// console.log("Объект был сохранен!");
+// 	}
+
+// });
+
+com1.find({"id" : "bad"}, function (err, comments) 
+	{
+
+comments.forEach(function (com) 
+		{
+com.commentariy = "the best!";
+
+com.save(function (err) 
+			{
+
+	if (err)	
+				{
+
+
+console.log(err);
+
+				}
+
+			});
+
+		});
+
+	});
+
+com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err)
+{
+	if(err!== null)
+	{
+		console.log(err);
+	}
+});
+
+var coolObject = {my: 12345};
+var toDos = [];
+
+//app.use(express.urlencoded());
+app.use(express.static(__dirname + "/client"));
+
+// создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
 
-app.get("/todos.json", function (req, res) {
-    ToDo.find({}, function (err, toDos) {
-	res.json(toDos);
-    });
+app.get("/someway.json", function (req, res)
+{
+res.json(stream);
 });
 
-app.post("/todos", function (req, res) {
-    console.log(req.body);
-    var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
-    
-    newToDo.save(function (err, result) {
-	if (err !== null) {
-	    // the element did not get saved!
-	    console.log(err);
-	    res.send("ERROR");
-	} else {
-	    // our client expects *all* of the todo items to be returned, so we'll do
-	    // an additional request to maintain compatibility
-	    ToDo.find({}, function (err, result) {
-		if (err !== null) {
-		    // the element did not get saved!
-		    res.send("ERROR");
+
+
+
+ var ToDB = function (newId, newComment)
+ 		{
+ 			var com1 =  { "Id" : newId, "Comment" : newComment };
+ 			com1.save(function (err) 
+{
+
+if (err !== null) {
+console.log(err);
 		}
-		res.json(result);
-	    });
+		else 
+	{
+console.log("Объект был сохранен!");
 	}
-    });
+}
+
+
+);
+ 		};
+
+
+
+app.use(express.bodyParser());
+app.post("/todos", function (req, res) 
+{
+  // сейчас объект сохраняется в req.body
+  var newToDo = req.body;
+  console.log(newToDo);
+  toDos.push(newToDo);
+  ToDB(newToDo.Id, newToDo.Comment);
+  // отправляем простой объект
+  res.json({'"message":"Вы разместили данные на сервере!"'});
 });
 

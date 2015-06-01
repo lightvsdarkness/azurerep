@@ -2,23 +2,17 @@ var express = require("express"),
     http = require("http"),
     // import the mongoose library
     mongoose = require("mongoose"),
-    app = express(),
-    services,
-    mongoUrl = "mongodb://localhost/amazeriffic";
-
+    app = express();
 app.use(express.static(__dirname + "/client"));
 app.use(express.bodyParser());
+var port = process.env.PORT || 1337;
+var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 
-if (process.env.VCAP_SERVICES) {
-    services = JSON.parse(process.env.VCAP_SERVICES);
-    mongoUrl = services["mongolab"][0].credentials.uri;
-    console.log(process.env.VCAP_SERVICES);
-}
 
-console.log(mongoUrl);
 
 // connect to the amazeriffic data store in mongo
-mongoose.connect(mongoUrl);
+//mongoose.connect('mongodb://localhost/amazeriffic');
+mongoose.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
 
 // This is our mongoose model for todos
 var ToDoSchema = mongoose.Schema({
@@ -28,7 +22,7 @@ var ToDoSchema = mongoose.Schema({
 
 var ToDo = mongoose.model("ToDo", ToDoSchema);
 
-http.createServer(app).listen(process.env.PORT || 3000);
+http.createServer(app).listen(port);
 
 app.get("/todos.json", function (req, res) {
     ToDo.find({}, function (err, toDos) {
@@ -58,3 +52,4 @@ app.post("/todos", function (req, res) {
 	}
     });
 });
+
