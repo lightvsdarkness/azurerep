@@ -144,7 +144,7 @@ Clake();
 	    $new_comment.fadeIn(1500);
 	    var $comms = $(".comment-input input").val();
 	    $(".comment-input input").val("");
-	    var someObject = { "Id" : $IMGcom, "Comment" : $comms };
+	    someObject = { "Id" : $IMGcom, "Comment" : $comms };
 	    // WTFWTFWTF jsonString2 WRONG!!! ИСПОЛЬЗУЙ СПЕЦИАЛЬНО СОЗДАННЫЙ ДЛЯ ЭТОГО someObject
 	//someObject = JSON.stringify(jsonString);
 	//console.log(jsonString2);
