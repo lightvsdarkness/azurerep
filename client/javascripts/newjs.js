@@ -17,14 +17,14 @@ var someAppOne11object;
 
 var someObject ={};
 
-setInterval(function () 
-{
-    $.getJSON("/someway.json", function (fromServer) 
-    {
-    // Сейчас "fromServer" становится объектом, возвращаемым маршрутом someway.json
-    console.log(fromServer);
-	});
-  }, 5000);
+// setInterval(function () 
+// {
+//     $.getJSON("/someway.json", function (fromServer) 
+//     {
+//     // Сейчас "fromServer" становится объектом, возвращаемым маршрутом someway.json
+//     console.log(fromServer);
+// 	});
+//   }, 5000);
 
 var Clake = function() 
 {
@@ -39,18 +39,14 @@ var Clake = function()
 
 
 
-var sun = function () 
-{
+var sun = function () {
 //
-var tweet = $.getJSON("/someway.json", function sun(fromServer) 
-	{
-
-someAppOne11object = fromServer;
-	});
+var tweet = $.getJSON("/someway.json", function sun(fromServer) {
+	someAppOne11object = fromServer;
+});
 
 //}, 5000);
 return fromServer;
-
 };
 
 
@@ -118,13 +114,10 @@ $(".tabs a:nth-child(1)").on("click", function ()
     // возвращается false, так как мы не переходим по ссылке
 
     
-		if(tabnumber===1)
-		{
-var cloud = sun();
-$(" main .content").prepend($("<p>").text(cloud));
-
-		
-		}
+	if(tabnumber===1) {
+		//var cloud = sun();
+		//$(" main .content").prepend($("<p>").text(cloud));
+	}
 			else if (tabnumber===2)
 				{
 				toDos.forEach(function (element) 
