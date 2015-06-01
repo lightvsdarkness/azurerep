@@ -46,8 +46,8 @@ var com1 = mongoose.model("Comm", CommSchema);
 // 	}
 // });
 
-var coolObject = {my: 12345};
-var toDos = [];
+// var coolObject = {my: 12345};
+// var toDos = [];
 
 //app.use(express.urlencoded());
 app.use(express.static(__dirname + "/client"));
@@ -59,22 +59,22 @@ http.createServer(app).listen(port);
 // 	res.json(stream);
 // });
 
-var ToDB = function (newId, newComment) {
-	//ПРИМЕР:
-	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
-	//ОШИБКА БЫЛА:
- 	//var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
- 	var newcom1 =  new com1({"id" : newId, "commentariy" : newComment });
- 	newcom1.save(function (err, result) {
-		if (err !== null) {
-			console.log(err);
-		}
-		else {
-			console.log("Объект был сохранен!");
-			return result;
-		}
-	});
-};
+// var ToDB = function (newId, newComment) {
+// 	//ПРИМЕР:
+// 	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
+// 	//ОШИБКА БЫЛА:
+//  	//var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
+//  	var newcom1 =  new com1({"id" : newId, "commentariy" : newComment });
+//  	newcom1.save(function (err, result) {
+// 		if (err !== null) {
+// 			console.log(err);
+// 		}
+// 		else {
+// 			console.log("Объект был сохранен!");
+// 			//return result;
+// 		}
+// 	});
+// };
 
 app.post("/todos", function (req, res) {
   // БЫЛО:
@@ -86,6 +86,5 @@ app.post("/todos", function (req, res) {
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-  //res.json(req.body);
-  res.send(req.body);
+  res.json(req.body);
 });
