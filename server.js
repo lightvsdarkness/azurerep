@@ -60,9 +60,11 @@ http.createServer(app).listen(port);
 // });
 
 var ToDB = function (newId, newComment) {
+	//ПРИМЕР:
 	//var newToDo = new ToDo({"description":req.body.description, "tags":req.body.tags});
-	//ОШИБКА БЫЛА
- 	var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
+	//ОШИБКА БЫЛА:
+ 	//var newcom1 =  new com1({"Id" : newId, "Comment" : newComment });
+ 	var newcom1 =  new com1({"id" : newId, "commentariy" : newComment });
  	newcom1.save(function (err, result) {
 		if (err !== null) {
 			console.log(err);
@@ -82,5 +84,5 @@ app.post("/todos", function (req, res) {
   toDos.push(newToDo);
   var workToSave = ToDB(newToDo.Id, newToDo.Comment);
   // отправляем простой объект
-  res.json(workToSave);
+  res.json(newToDo);
 });
