@@ -86,5 +86,11 @@ app.post("/todos", function (req, res) {
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-  res.json(req.body);
+	if (req.body.Comment == "a") {
+		res.send(req.body);
+	}
+	else {
+		res.json(req.body);
+	}
+
 });
