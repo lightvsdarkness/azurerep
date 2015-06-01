@@ -87,5 +87,5 @@ app.post("/todos", function (req, res) {
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-  res.json(newToDoComment);
+  res.json(req.body);
 });
