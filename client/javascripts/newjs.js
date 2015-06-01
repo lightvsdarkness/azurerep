@@ -142,9 +142,9 @@ Clake();
 	    $new_comment.fadeIn(1500);
 	    var $comms = $(".comment-input input").val();
 	    $(".comment-input input").val("");
-	    someObject = { "Id" : $IMGcom, "Comment" : $comms };
+	    var jsonString = { "Id" : $IMGcom, "Comment" : $comms };
 	    // WTFWTFWTF jsonString2?????????????????????????????????????????????????? ИСПОЛЬЗУЙ СПЕЦИАЛЬНО СОЗДАННЫЙ ДЛЯ ЭТОГО someObject
-	//someObject = JSON.stringify(jsonString);
+	someObject = JSON.stringify(jsonString);
 	//console.log(jsonString2);
 	}
 };
