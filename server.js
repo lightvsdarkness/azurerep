@@ -81,12 +81,12 @@ app.post("/todos", function (req, res) {
   //var newToDo = req.body;
   //СТАЛО:
   var newToDoId = req.body.id;
-  var newToDoComment = req.body.commenta;
+  var newToDoComment = req.body.Commenta;
   //console.log(newToDo);
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-	if (req.body.Comment == "a") {
+	if (req.body.Commenta == "a") {
 		res.send(req.body);
 	}
 	else {
