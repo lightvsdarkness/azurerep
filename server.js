@@ -74,7 +74,6 @@ var ToDB = function (newId, newComment) {
 			return result;
 		}
 	});
-	
 };
 
 app.post("/todos", function (req, res) {
@@ -87,5 +86,6 @@ app.post("/todos", function (req, res) {
   //toDos.push(newToDo);
   //var workToSave = ToDB(newToDoId, newToDoComment);
   // отправляем простой объект
-  res.json(req.body);
+  //res.json(req.body);
+  res.send(req.body);
 });
