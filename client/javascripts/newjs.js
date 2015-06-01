@@ -26,11 +26,12 @@ var someObject;
 //   }, 5000);
 
 var Clake = function() {
-	$.post("todos", someObject, function (data) 
+	console.log(someObject);
+	$.post("todos", someObject, function (result) 
 	{
     // это обратный вызов, выполняется при ответе сервера
     console.log("Получение данных с сервера");
-    console.log(data);
+    console.log(result);
     });
 };
 
@@ -145,6 +146,7 @@ Clake();
 	    // WTFWTFWTF jsonString2??????????????????????????????????????????????????
 	someObject = JSON.stringify(jsonString);
 	//console.log(jsonString2);
+	console.log(someObject);
 	}
 };
 
