@@ -82,24 +82,24 @@ res.json("stream: 1");
 
 
 
-//  var ToDB = function (newId, newComment)
-//  		{
-//  			var com11 = new com1  { "id" : newId, "commentariy" : newComment };
-//  			com11.save(function (err, result) 
-// {
+ var ToDB = function (newId, newComment)
+ 		{
+ 			var com11 = new com1  ({ "id" : newId, "commentariy" : newComment });
+ 			com11.save(function (err, result) 
+{
 
-// if (err !== null) {
-// console.log(err);
-// 		}
-// 		else 
-// 	{
-// console.log("Объект был сохранен!");
-// 	}
-// }
+if (err !== null) {
+console.log(err);
+		}
+		else 
+	{
+console.log("Объект был сохранен!");
+	}
+}
 
 
-// );
-//  		};
+);
+ 		};
 
 
 
