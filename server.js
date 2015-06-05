@@ -112,8 +112,8 @@ res.json("stream": "1");
 app.post("/todos", function (req, res) 
 {
   // сейчас объект сохраняется в req.body
-  var newToDo = req.body;
-  console.log(newToDo);
+  //var newToDo = req.body;
+  //console.log(req.body);
  
   //ToDB(newToDo.id, newToDo.comment);
   // отправляем простой объект
