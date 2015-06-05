@@ -75,9 +75,8 @@ app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
 
-app.get("/someway.json", function (req, res)
-{
-res.json("stream": "1");
+app.get("/someway.json", function (req, res) {
+res.json("stream: 1");
 });
 
 
