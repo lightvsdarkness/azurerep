@@ -9,15 +9,10 @@ var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
 mongoose.connect(connectionString);
 app.use(express.bodyParser());
 
-var CommSchema = new mongoose.Schema
-({
-
+var CommSchema = new mongoose.Schema({
 id : String,
-
 commentariy : String
-
 });
-
 var com1 = mongoose.model("Comm", CommSchema);
 
 // var c1 = new com1({"id":"Doggie", "commentariy":"goodie"});
@@ -71,8 +66,8 @@ var com1 = mongoose.model("Comm", CommSchema);
 	}
 });*/
 
-var coolObject = {my: 12345};
-var toDos = [];
+// var coolObject = {my: 12345};
+// var toDos = [];
 
 //app.use(express.urlencoded());
 app.use(express.static(__dirname + "/client"));
@@ -80,10 +75,10 @@ app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(port);
 
-app.get("/someway.json", function (req, res)
-{
-res.json("stream": "1");
-});
+// app.get("/someway.json", function (req, res)
+// {
+// res.json("stream": "1");
+// });
 
 
 
