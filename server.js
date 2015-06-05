@@ -32,31 +32,31 @@ var com1 = mongoose.model("Comm", CommSchema);
 // });
 
 
-//  var cf = function () {
-//  	com1.find({"id" : "bad"}, function (err, comments) 
-// 	{
+ var cf = function () {
+ 	com1.find({"id" : "bad"}, function (err, comments) 
+	{
 
-// comments.forEach(function (com) 
-// 		{
-// com.commentariy = "the best!";
+comments.forEach(function (com) 
+		{
+com.commentariy = "the best!";
 
-// com.save(function (err) 
-// 			{
+com.save(function (err) 
+			{
 
-// 	if (err)	
-// 				{
+	if (err)	
+				{
 
 
-// console.log(err);
+console.log(err);
 
-// 				}
+				}
 
-// 			});
+			});
 
-// 		});
+		});
 
-// 	});
-// };
+	});
+};
 
 /*com1.remove({"id":"Doggie", "commentariy":"goodie"}, function(err)
 {
